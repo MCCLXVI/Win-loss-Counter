@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Win/Loss Counter</title>
+  <style>
+        body {
+      font-family: Arial, sans-serif;
+      background-image: url('White Background.jpg');
+      background-size: cover;
+    }
+
+    .centered-text {
+      text-align: center;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    p {
+      margin-bottom: 10px;
+    }
+
+
+    button {
+      width: 300px; 
+      height: 200px; 
+      padding: 10px 20px;
+      margin: 25px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    #win-button {
+      background-color: #1a721a; 
+    }
+
+    #loss-button {
+      background-color: #9c2424; 
+    }
+
+    
+    .orange-square {
+      position: absolute;
+      top: 0; 
+      left: 0; 
+      width: 480px;
+      height: 100vh;
+      background-color: #d6630d; 
+    }
+
+    .blue-circle {
+      position: absolute; 
+      top: 50%; /* Center the circle vertically */
+      left: 50%; /* Center the circle horizontally */
+      transform: translate(-140%, -50%); 
+      width: 500px; /* Diameter of the circle */
+      height: 500px; 
+      border-radius: 50%; 
+      background-color: rgb(19, 59, 82);
+      display: flex; 
+      justify-content: center; 
+      align-items: center; 
+    }
+
+    .blue-circle h1 {
+      color: white; 
+      margin: 0; 
+      font-size: 30px; 
+    }
+
+    
+    .counter-text {
+      position: absolute;
+      top: 40%;
+      left: 50%;
+      transform: translate(170%, -50%);
+      font-size: 36px; 
+      font-weight: bold;
+      
+      top: 50%; 
+      left: 50%; 
+    }
+
+    
+    .button-container {
+      position: absolute;
+      top: 35%;
+      left: 50%;
+      transform: translate(155%, -50%);
+      display: flex;
+      flex-direction: column;
+      align-items: flex end;
+      gap: 10px;
+    }
+    #reset-button {
+  position: absolute;
+  top: 530px; 
+  left: 44%; 
+  transform: translateX(-50%);
+  background-color: #4552c4; 
+  color: #000000; 
+  padding: 10px 20px; 
+  border: none; 
+  border-radius: 5px; 
+  cursor: pointer;
+}
+#minus-win-button {
+    position: absolute;
+    left: -400px;
+    top: 0px;
+    background-color: #c445a9; 
+}
+
+#minus-loss-button {
+    position: absolute;
+    left: 330px;
+    top: 40px;
+}
+  </style>
+</head>
+<body>
+  <div class="orange-square"></div>
+  <div class="blue-circle">
+    <h1>Win/Loss Counter</h1>
+    <div class="counter-text">
+      <p>Wins: <span id="win-count">0</span></p> 
+      <p>Losses: <span id="loss-count">0</span></p> 
+    </div>
+  </div>
+  <div class="button-container">
+    <button id="win-button">Win</button>
+    <button id="loss-button">Loss</button>
+    <button id="reset-button" >Reset</button> 
+    <button id="minus-win-button">-</button>
+    <button id="minus-loss-button">-</button>
+  </div>
+  <script>
+    const winButton = document.getElementById("win-button");
+    const lossButton = document.getElementById("loss-button");
+    const winCountSpan = document.getElementById("win-count");
+    const lossCountSpan = document.getElementById("loss-count");
+    const resetButton = document.getElementById("reset-button");
+    const minusWinButton = document.getElementById("minus-win-button");
+    const minusLossButton = document.getElementById("minus-loss-button");
+
+    let winCount = 0; 
+    let lossCount = 0; 
+
+    winButton.addEventListener("click", () => {
+      winCount++; 
+      winCountSpan.textContent = winCount; 
+    });
+    lossButton.addEventListener("click", () => {
+      lossCount++;
+      lossCountSpan.textContent = lossCount; 
+    });
+
+    resetButton.addEventListener("click", () => {
+      winCount = 0; 
+      lossCount = 0; 
+      winCountSpan.textContent = winCount; 
+      lossCountSpan.textContent = lossCount;
+    });
+    minusWinButton.addEventListener("click", () => {
+     lossButtonLeft -= 20;
+     lossButtonTop += 20;
+    let currentWins = parseInt(winCountSpan.textContent);
+    if (currentWins > 0) {
+    winCountSpan.textContent = currentWins - 1;
+    }
+    });
+    minusLossButton.addEventListener("click", () => {
+      lossButtonLeft -= 500;
+      lossButtonTop += 20;
+    let currentLosses = parseInt(lossCountSpan.textContent);
+    if (currentLosses > 0) {
+    lossCountSpan.textContent = currentLosses - 1;
+    }
+    });
+
+  </script>
+</body>
+</html>
